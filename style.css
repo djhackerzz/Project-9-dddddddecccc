@@ -1299,7 +1299,33 @@ body {
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3), 
                0 0 20px rgba(255, 255, 255, 0.2);
   letter-spacing: 2px;
-  margin: 0;
+  margin: 0 0 3vmin 0;
+}
+
+.letter-btn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5vmin;
+  font-weight: 400;
+  background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+  color: white;
+  border: none;
+  padding: 1.5vmin 3vmin;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: button-fade-in 1s ease-in-out 8s forwards;
+}
+
+.letter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.5);
+  background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+}
+
+.letter-btn:active {
+  transform: translateY(0);
 }
 
 @keyframes headline-fade-in {
@@ -1310,6 +1336,17 @@ body {
   100% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes button-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -1324,9 +1361,9 @@ body {
 
 .watermark p {
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5vmin;
+  font-size: 2vmin;
   font-weight: 300;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 0.7);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   margin: 0;
   letter-spacing: 1px;
@@ -1341,4 +1378,162 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Letter Modal Styles */
+.letter-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.letter-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.letter-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.letter-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: transform 0.3s ease;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.letter-modal.active .letter-container {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.letter {
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  width: 80vmin;
+  min-height: 100vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF69B4, #FFB6C1, #FFC0CB);
+}
+
+.letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vmin 4vmin 2vmin 4vmin;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+.letter-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.8vmin;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  background: linear-gradient(135deg, #FF69B4, #8A2BE2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 4vmin;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 5vmin;
+  height: 5vmin;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 105, 180, 0.1);
+  color: #FF69B4;
+}
+
+.letter-content {
+  padding: 2vmin 4vmin 4vmin 4vmin;
+}
+
+.photo-container {
+  text-align: center;
+  margin-bottom: 3vmin;
+}
+
+.photo-frame {
+  display: inline-block;
+  padding: 1vmin;
+  background: linear-gradient(135deg, #FF69B4, #FFB6C1);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(255, 105, 180, 0.3);
+}
+
+.letter-photo {
+  width: 25vmin;
+  height: 25vmin;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.letter-text {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  line-height: 1.8;
+}
+
+.letter-text p {
+  margin-bottom: 2vmin;
+  font-size: 2.5vmin;
+  text-align: justify;
+}
+
+.letter-text p:first-child {
+  font-style: italic;
+  color: #666;
+}
+
+.signature {
+  text-align: right;
+  font-style: italic;
+  color: #FF69B4;
+  font-weight: 500;
+  margin-top: 3vmin !important;
+  border-top: 1px solid rgba(255, 105, 180, 0.2);
+  padding-top: 2vmin;
 }
