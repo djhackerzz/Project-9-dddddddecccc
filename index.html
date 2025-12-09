@@ -1,474 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Flowers</title>
-  <link rel="stylesheet" href="./style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Flowers for Hardip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+  <main>
 
-<body class="not-loaded">
-  <div class="sun"></div>
-  <div class="night"></div>
+    <!-- PAGE 1: FLOWER / HOME -->
+    <section class="page page--hero active" id="page-hero">
+      <div class="flower-wrapper">
+        <!-- Put your existing flower animation here -->
+        <h1 class="hero-title">So many flowers but my favourtite one is you hehe</h1>
+      </div>
+      <button class="btn btn-primary" data-goto="page-letter">
+        Open Special Letter
+      </button>
+    </section>
 
-  <!-- Headline -->
-  <div class="headline">
-    <h1>So many flowers but my favourtite one is you hehe🤭</h1>
-    <button class="letter-btn" id="letterBtn">Open Special Letter 💌</button>
-  </div>
+    <!-- PAGE 2: LETTER -->
+    <section class="page page--letter" id="page-letter">
+      <div class="card letter-card">
+        <h2>A Special Letter For You</h2>
 
-  <!-- Letter Modal -->
-  <div class="letter-modal" id="letterModal">
-    <div class="letter-overlay"></div>
-    <div class="letter-container">
-      <div class="letter">
-        <div class="letter-header">
-          <h2>A Special Letter For You</h2>
-          <button class="close-btn" id="closeBtn">&times;</button>
-        </div>
-        <div class="letter-content">
-          <div class="photo-container">
-            <div class="photo-frame">
-              <img src="./37a6bcec79d7ebd088a5209463ff00e5.jpg" alt="Special Memory" class="letter-photo">
-            </div>
-          </div>
-          <div class="letter-text">
-            <p>My Dearest Hardip,</p>
-            <p>Like these beautiful flowers that bloom with time and care, our connection grows more beautiful each day. You bring color to my world just like these vibrant petals bring life to the garden.</p>
-            <p>Every moment with you is like watching a flower bloom - magical, precious, and filled with wonder. Thank you for being the sunshine in my life.</p>
-            <p class="signature">With all my love,<br>Your Shaitan 💕</p>
+        <p class="letter-line">My Dearest Hardip,</p>
 
-            <!-- Extra interactive section -->
-          <div class="extra-section">
-  <div class="steps-container">
-    <!-- STEP 1: Colour -->
-    <div class="step-screen active" data-step="1">
-      <h3 class="step-title">Favourite colour 🎨</h3>
-      <p class="step-text">
-        If I had to paint your vibe in one shade, it would be
-        <span class="highlight-pink">pink</span> — soft, warm and impossibly cute. Just like you.
-      </p>
-    </div>
+        <p>
+          Like these beautiful flowers that bloom with time and care, our connection
+          grows more beautiful each day. You bring color to my world just like these
+          vibrant petals bring life to the garden.
+        </p>
 
-    <!-- STEP 2: Car -->
-    <div class="step-screen" data-step="2">
-      <h3 class="step-title">Favourite car 🚗</h3>
-      <p class="step-text">
-        Somewhere in your heart, there’s a
-        <span class="highlight-pink">BMW</span> waiting to take you on late–night drives with the perfect playlist on.
-      </p>
-    </div>
+        <p>
+          Every moment with you is like watching a flower bloom – magical, precious,
+          and filled with wonder. Thank you for being the sunshine in my life.
+        </p>
 
-    <!-- STEP 3: Flower -->
-    <div class="step-screen" data-step="3">
-      <h3 class="step-title">Favourite flower 🌷</h3>
-      <p class="step-text">
-        You remind me of a <span class="highlight-pink">tulip</span> — gentle, elegant, and somehow always making everything around you prettier.
-      </p>
-    </div>
-
-    <!-- STEP 4: Name reveal -->
-    <div class="step-screen" data-step="4">
-      <h3 class="step-title">But my favourite will always be…</h3>
-
-      <div class="name-wrapper visible">
-        <span class="name-heart">❤</span>
-        <span class="her-name">HARDIP</span>
-        <span class="name-heart">❤</span>
+        <p class="letter-line">With all my love,<br />Your Shaitan</p>
       </div>
 
-      <p class="step-text small-note">
-        No matter the colour, the car or the flower — it’s always you.
-      </p>
-    </div>
-
-    <!-- Navigation buttons -->
-    <div class="steps-nav">
-      <button class="step-btn" id="prevStepBtn">⬅ Back</button>
-      <button class="step-btn primary" id="nextStepBtn">Next ➜</button>
-    </div>
-  </div>
-</div>
-
-
-            <!-- /extra-section -->
-         <div class="extra-section">
-  <div class="steps-container">
-    <!-- STEP 1: Colour -->
-    <div class="step-screen active" data-step="1">
-      <div class="step-visual step-visual--color">
-        <div class="color-shimmer"></div>
-
-        <div class="color-orb color-orb--1"></div>
-        <div class="color-orb color-orb--2"></div>
-        <div class="color-orb color-orb--3"></div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" data-goto="page-hero">⬅ Back</button>
+        <button class="btn btn-primary" data-goto="page-fav-1">Next ➜</button>
       </div>
-      <h3 class="step-title">Favourite colour 🎨</h3>
-      <p class="step-text">
-        If I had to paint your vibe in one shade, it would be
-        <span class="highlight-pink">pink</span> — soft, warm and impossibly cute. Just like you.
-      </p>
-    </div>
+    </section>
 
-    <!-- STEP 2: Car -->
-    <div class="step-screen" data-step="2">
-      <div class="step-visual step-visual--car">
-        <div class="car-road"></div>
-        <div class="car">
-          <div class="car-top"></div>
-          <div class="car-body"></div>
-          <div class="car-wheel car-wheel--left"></div>
-          <div class="car-wheel car-wheel--right"></div>
-        </div>
-      </div>
-      <h3 class="step-title">Favourite car 🚗</h3>
-      <p class="step-text">
-        Somewhere in your heart, there’s a
-        <span class="highlight-pink">BMW</span> waiting to take you on late–night drives with the perfect playlist on.
-      </p>
-    </div>
-
-    <!-- STEP 3: Flower -->
-    <div class="step-screen" data-step="3">
-      <div class="step-visual step-visual--tulip">
-        <div class="tulip-stem"></div>
-        <div class="tulip-leaf tulip-leaf--left"></div>
-        <div class="tulip-leaf tulip-leaf--right"></div>
-        <div class="tulip-flower">
-          <div class="tulip-petal tulip-petal--left"></div>
-          <div class="tulip-petal tulip-petal--center"></div>
-          <div class="tulip-petal tulip-petal--right"></div>
-        </div>
-      </div>
-      <h3 class="step-title">Favourite flower 🌷</h3>
-      <p class="step-text">
-        You remind me of a <span class="highlight-pink">tulip</span> — gentle, elegant, and somehow always making everything around you prettier.
-      </p>
-    </div>
-
-    <!-- STEP 4: Name reveal -->
-    <div class="step-screen" data-step="4">
-      <h3 class="step-title">But my favourite will always be…</h3>
-
-      <div class="name-wrapper visible">
-        <span class="name-heart">❤</span>
-        <span class="her-name">HARDIP</span>
-        <span class="name-heart">❤</span>
+    <!-- PAGE 3: FAVOURITE COLOUR -->
+    <section class="page page--fav" id="page-fav-1">
+      <div class="card fav-card">
+        <h2>Favourite colour</h2>
+        <p>
+          If I had to paint your vibe in one shade, it would be pink — soft, warm and
+          impossibly cute. Just like you.
+        </p>
       </div>
 
-      <p class="step-text small-note">
-        No matter the colour, the car or the flower — it’s always you.
-      </p>
-    </div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" data-goto="page-letter">⬅ Back</button>
+        <button class="btn btn-primary" data-goto="page-fav-2">Next ➜</button>
+      </div>
+    </section>
 
-    <!-- Navigation buttons -->
-    <div class="steps-nav">
-      <button class="step-btn" id="prevStepBtn">⬅ Back</button>
-      <button class="step-btn primary" id="nextStepBtn">Next ➜</button>
-    </div>
-  </div>
-</div>
+    <!-- PAGE 4: FAVOURITE CAR -->
+    <section class="page page--fav" id="page-fav-2">
+      <div class="card fav-card">
+        <h2>Favourite car</h2>
+        <p>
+          Somewhere in your heart, there’s a BMW waiting to take you on late–night
+          drives with the perfect playlist on.
+        </p>
+      </div>
 
-  <!-- Flowers ground + stems + leaves -->
-  <div class="flowers">
-    <div class="flower flower--1">
-      <div class="flower__leafs flower__leafs--1">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" data-goto="page-fav-1">⬅ Back</button>
+        <button class="btn btn-primary" data-goto="page-fav-3">Next ➜</button>
+      </div>
+    </section>
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-        <div class="flower__line__leaf flower__line__leaf--5"></div>
-        <div class="flower__line__leaf flower__line__leaf--6"></div>
-      </div>
-    </div>
+    <!-- PAGE 5: FAVOURITE FLOWER / FINAL -->
+    <section class="page page--fav" id="page-fav-3">
+      <div class="card fav-card">
+        <h2>Favourite flower</h2>
+        <p>
+          You remind me of a tulip — gentle, elegant, and somehow always making
+          everything around you prettier.
+        </p>
 
-    <div class="flower flower--2">
-      <div class="flower__leafs flower__leafs--2">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+        <h3 class="final-heading">But my favourite will always be…</h3>
+        <p class="big-name">❤ HARDIP ❤</p>
+        <p>
+          No matter the colour, the car or the flower — it’s always you.
+        </p>
+      </div>
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
+      <div class="nav-row">
+        <button class="btn btn-secondary" data-goto="page-fav-2">⬅ Back</button>
+        <button class="btn btn-primary" data-goto="page-hero">Back to Start ⟳</button>
       </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-      </div>
-    </div>
+    </section>
 
-    <div class="flower flower--3">
-      <div class="flower__leafs flower__leafs--3">
-        <div class="flower__leaf flower__leaf--1"></div>
-        <div class="flower__leaf flower__leaf--2"></div>
-        <div class="flower__leaf flower__leaf--3"></div>
-        <div class="flower__leaf flower__leaf--4"></div>
-        <div class="flower__white-circle"></div>
+  </main>
 
-        <div class="flower__light flower__light--1"></div>
-        <div class="flower__light flower__light--2"></div>
-        <div class="flower__light flower__light--3"></div>
-        <div class="flower__light flower__light--4"></div>
-        <div class="flower__light flower__light--5"></div>
-        <div class="flower__light flower__light--6"></div>
-        <div class="flower__light flower__light--7"></div>
-        <div class="flower__light flower__light--8"></div>
-      </div>
-      <div class="flower__line">
-        <div class="flower__line__leaf flower__line__leaf--1"></div>
-        <div class="flower__line__leaf flower__line__leaf--2"></div>
-        <div class="flower__line__leaf flower__line__leaf--3"></div>
-        <div class="flower__line__leaf flower__line__leaf--4"></div>
-      </div>
-    </div>
-
-    <div class="grow-ans" style="--d:1.2s">
-      <div class="flower__g-long">
-        <div class="flower__g-long__top"></div>
-        <div class="flower__g-long__bottom"></div>
-      </div>
-    </div>
-
-    <div class="growing-grass">
-      <div class="flower__grass flower__grass--1">
-        <div class="flower__grass--top"></div>
-        <div class="flower__grass--bottom"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-        <div class="flower__grass__overlay"></div>
-      </div>
-    </div>
-
-    <div class="growing-grass">
-      <div class="flower__grass flower__grass--2">
-        <div class="flower__grass--top"></div>
-        <div class="flower__grass--bottom"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
-        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
-        <div class="flower__grass__overlay"></div>
-      </div>
-    </div>
-
-    <div class="grow-ans" style="--d:2.4s">
-      <div class="flower__g-right flower__g-right--1">
-        <div class="leaf"></div>
-      </div>
-    </div>
-
-    <div class="grow-ans" style="--d:2.8s">
-      <div class="flower__g-right flower__g-right--2">
-        <div class="leaf"></div>
-      </div>
-    </div>
-
-    <div class="grow-ans" style="--d:2.8s">
-      <div class="flower__g-front">
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
-          <div class="flower__g-front__leaf"></div>
-        </div>
-        <div class="flower__g-front__line"></div>
-      </div>
-    </div>
-
-    <div class="grow-ans" style="--d:3.2s">
-      <div class="flower__g-fr">
-        <div class="leaf"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
-        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--0">
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:2.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--1">
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.8s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--2">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.4s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--3">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--4">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--5">
-      <div class="grow-ans" style="--d:4s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--6">
-      <div class="grow-ans" style="--d:4.2s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.4s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.6s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:4.8s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-
-    <div class="long-g long-g--7">
-      <div class="grow-ans" style="--d:3s">
-        <div class="leaf leaf--0"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.2s">
-        <div class="leaf leaf--1"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.5s">
-        <div class="leaf leaf--2"></div>
-      </div>
-      <div class="grow-ans" style="--d:3.6s">
-        <div class="leaf leaf--3"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hidden background music (we'll control via JS) -->
-  <audio id="bgMusic" loop>
-    <source src="Pretty-Little-Baby-128kbps.mp3" type="audio/mpeg">
-  </audio>
-
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
