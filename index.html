@@ -39,51 +39,57 @@
             <p class="signature">With all my love,<br>Your Shaitan 💕</p>
 
             <!-- Extra interactive section -->
-            <div class="extra-section">
-              <h3>Tap to know more about you ✨</h3>
-              <p class="small-note">Because I notice every little thing about you…</p>
+           <div class="extra-section">
+  <div class="steps-container">
+    <!-- STEP 1: Colour -->
+    <div class="step-screen active" data-step="1">
+      <h3 class="step-title">Favourite colour 🎨</h3>
+      <p class="step-text">
+        If I had to paint your vibe in one shade, it would be
+        <span class="highlight-pink">pink</span> — soft, warm and impossibly cute. Just like you.
+      </p>
+    </div>
 
-              <div class="cards-grid">
-                <div class="info-card reveal-card" data-topic="color">
-                  <h4>Favourite Color 🎨</h4>
-                  <p class="question">Tap to see</p>
-                  <p class="answer">
-                    Your world looks best in
-                    <span>💗 pink</span> — soft, beautiful, and exactly like you.
-                  </p>
-                </div>
+    <!-- STEP 2: Car -->
+    <div class="step-screen" data-step="2">
+      <h3 class="step-title">Favourite car 🚗</h3>
+      <p class="step-text">
+        Somewhere in your heart, there’s a
+        <span class="highlight-pink">BMW</span> waiting to take you on late–night drives with the perfect playlist on.
+      </p>
+    </div>
 
-                <div class="info-card reveal-card" data-topic="car">
-                  <h4>Favourite Car 🚗</h4>
-                  <p class="question">Tap to see</p>
-                  <p class="answer">
-                    Your dream ride is a
-                    <span>BMW</span> — classy, powerful, and unforgettable… just like your presence. 😉
-                  </p>
-                </div>
+    <!-- STEP 3: Flower -->
+    <div class="step-screen" data-step="3">
+      <h3 class="step-title">Favourite flower 🌷</h3>
+      <p class="step-text">
+        You remind me of a <span class="highlight-pink">tulip</span> — gentle, elegant, and somehow always making everything around you prettier.
+      </p>
+    </div>
 
-                <div class="info-card reveal-card" data-topic="flower">
-                  <h4>Favourite Flower 🌷</h4>
-                  <p class="question">Tap to see</p>
-                  <p class="answer">
-                    Your favourite flower is the
-                    <span>tulip 🌷</span> — elegant, rare, and quietly stunning… just like your smile.
-                  </p>
-                </div>
-              </div>
+    <!-- STEP 4: Name reveal -->
+    <div class="step-screen" data-step="4">
+      <h3 class="step-title">But my favourite will always be…</h3>
 
-              <div class="name-section">
-                <button class="btn show-name-btn" id="showNameBtn">
-                  Tap for a little secret 🌙
-                </button>
+      <div class="name-wrapper visible">
+        <span class="name-heart">❤</span>
+        <span class="her-name">HARDIP</span>
+        <span class="name-heart">❤</span>
+      </div>
 
-                <div class="name-wrapper" id="nameWrapper">
-                  <span class="name-heart">❤</span>
-                  <span class="her-name">HARDIP</span>
-                  <span class="name-heart">❤</span>
-                </div>
-              </div>
-            </div>
+      <p class="step-text small-note">
+        No matter the colour, the car or the flower — it’s always you.
+      </p>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="steps-nav">
+      <button class="step-btn" id="prevStepBtn">⬅ Back</button>
+      <button class="step-btn primary" id="nextStepBtn">Next ➜</button>
+    </div>
+  </div>
+</div>
+
             <!-- /extra-section -->
           </div>
         </div>
