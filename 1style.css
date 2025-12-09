@@ -1,0 +1,228 @@
+/* BASIC RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #25183a 0, #05040a 55%, #000000 100%);
+  color: #fefefe;
+  min-height: 100vh;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* PAGE LAYOUT – ONE SCREEN */
+.page {
+  min-height: 100vh;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* WRAPPER AROUND FLOWER + TITLE */
+.flower-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* FLOWER – dynamic bloom style */
+
+/* Container */
+.flower {
+  position: relative;
+  width: 200px;
+  height: 260px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Center disc */
+.flower__center {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff7d4 0, #ffd86b 40%, #f6a800 80%);
+  box-shadow: 0 0 20px rgba(255, 200, 60, 0.7);
+  z-index: 3;
+  animation: centerPulse 3.2s ease-in-out infinite;
+}
+
+/* Petals base */
+.flower__petal {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  width: 80px;
+  height: 120px;
+  transform-origin: 50% 80%;
+  border-radius: 80px 80px 10px 10px;
+  background: radial-gradient(circle at 30% 20%, #ffe3ff 0, #ff7ad9 40%, #f01386 80%);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  --angle: 0deg;
+  transform: translateX(-50%) rotate(var(--angle)) scale(0.1);
+  animation: petalGrow 1.3s ease-out forwards;
+}
+
+/* Each petal angle + delay */
+.flower__petal--1 {
+  --angle: 0deg;
+  animation-delay: 0s;
+}
+.flower__petal--2 {
+  --angle: 60deg;
+  animation-delay: 0.1s;
+}
+.flower__petal--3 {
+  --angle: 120deg;
+  animation-delay: 0.2s;
+}
+.flower__petal--4 {
+  --angle: 180deg;
+  animation-delay: 0.3s;
+}
+.flower__petal--5 {
+  --angle: 240deg;
+  animation-delay: 0.4s;
+}
+.flower__petal--6 {
+  --angle: 300deg;
+  animation-delay: 0.5s;
+}
+
+/* Stem */
+.flower__stem {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 10px;
+  height: 140px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #66ffb8, #00b96f);
+  box-shadow: 0 0 12px rgba(0, 255, 153, 0.5);
+}
+
+/* Leaves */
+.flower__leaf {
+  position: absolute;
+  bottom: 55px;
+  width: 60px;
+  height: 30px;
+  background: radial-gradient(circle at 10% 20%, #b8ffd9 0, #29c079 40%, #038a4c 80%);
+  border-radius: 60px 60px 0 60px;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: leafGrow 0.8s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.flower__leaf--left {
+  left: 50%;
+  transform-origin: 100% 50%;
+  transform: translateX(-90%) rotate(-20deg) scale(0.8);
+}
+
+.flower__leaf--right {
+  right: 50%;
+  transform-origin: 0% 50%;
+  transform: translateX(90%) rotate(20deg) scale(0.8);
+}
+
+/* Title text under the flower */
+.hero-title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+/* Button styling */
+.btn {
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.96rem;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff5eb8, #ff9ad5);
+  color: #1c0020;
+  font-weight: 600;
+  box-shadow: 0 10px 22px rgba(255, 94, 184, 0.45);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.55);
+  opacity: 0.96;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* KEYFRAMES */
+@keyframes petalGrow {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) rotate(var(--angle)) scale(0.1);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(var(--angle)) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) rotate(var(--angle)) scale(1);
+  }
+}
+
+@keyframes centerPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    box-shadow: 0 0 16px rgba(255, 210, 80, 0.7);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+    box-shadow: 0 0 26px rgba(255, 230, 120, 0.9);
+  }
+}
+
+@keyframes leafGrow {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.8);
+  }
+}
+
+/* SMALL DESKTOP TWEAKS */
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+}
