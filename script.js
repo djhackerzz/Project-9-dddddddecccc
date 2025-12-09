@@ -1,59 +1,91 @@
-let musicPlaying = false;
+document.addEventListener("DOMContentLoaded", () => {
+  const body = document.body;
 
-function toggleMusic() {
-  const music = document.getElementById('bgMusic');
-  const musicBtn = document.getElementById('musicBtn');
-  
-  if (musicPlaying) {
-    music.pause();
-    musicBtn.textContent = '🔇';
-    musicPlaying = false;
-  } else {
-    music.play().catch(e => console.log('Play failed:', e));
-    musicBtn.textContent = '🔊';
-    musicPlaying = true;
+  // Let all CSS animations start
+  setTimeout(() => {
+    body.classList.remove("not-loaded");
+  }, 100); // small delay for nicer entrance
+
+  // ===== Letter modal elements =====
+  const letterBtn = document.getElementById("letterBtn");
+  const letterModal = document.getElementById("letterModal");
+  const closeBtn = document.getElementById("closeBtn");
+  const overlay = document.querySelector(".letter-overlay");
+
+  // ===== Background music =====
+  const bgMusic = document.getElementById("bgMusic");
+  let isMusicPlaying = false;
+
+  function tryPlayMusic() {
+    if (!bgMusic || isMusicPlaying) return;
+
+    bgMusic
+      .play()
+      .then(() => {
+        isMusicPlaying = true;
+      })
+      .catch(() => {
+        // Autoplay might be blocked; that's okay, we just ignore the error
+      });
   }
-}
-onload = () => {
-  // Prevent layout shifts by setting initial viewport
-  const viewport = document.querySelector('meta[name="viewport"]');
-  if (!viewport) {
-    const meta = document.createElement('meta');
-    meta.name = 'viewport';
-    meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
-    document.head.appendChild(meta);
+
+  // ===== Modal open/close =====
+  function openModal() {
+    if (!letterModal) return;
+    letterModal.classList.add("active");
+    tryPlayMusic();
   }
-  
-  const c = setTimeout(() => {
-    document.body.classList.remove("not-loaded");
-    clearTimeout(c);
-  }, 500);
 
-  // Letter modal functionality
-  const letterBtn = document.getElementById('letterBtn');
-  const letterModal = document.getElementById('letterModal');
-  const closeBtn = document.getElementById('closeBtn');
-  const letterOverlay = document.querySelector('.letter-overlay');
+  function closeModal() {
+    if (!letterModal) return;
+    letterModal.classList.remove("active");
+  }
 
-  // Open letter
-  letterBtn.addEventListener('click', () => {
-    letterModal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
-  });
+  if (letterBtn) {
+    letterBtn.addEventListener("click", openModal);
+  }
 
-  // Close letter functions
-  const closeLetter = () => {
-    letterModal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-  };
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
 
-  closeBtn.addEventListener('click', closeLetter);
-  letterOverlay.addEventListener('click', closeLetter);
+  if (overlay) {
+    overlay.addEventListener("click", closeModal);
+  }
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && letterModal.classList.contains('active')) {
-      closeLetter();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal();
     }
   });
-};
+
+  // Also try to start music on first click anywhere (mobile friendly)
+  document.addEventListener(
+    "click",
+    () => {
+      tryPlayMusic();
+    },
+    { once: true }
+  );
+
+  // ===== Pink / BMW / Tulip cards =====
+  const revealCards = document.querySelectorAll(".reveal-card");
+
+  revealCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      card.classList.toggle("revealed");
+    });
+  });
+
+  // ===== Name reveal =====
+  const showNameBtn = document.getElementById("showNameBtn");
+  const nameWrapper = document.getElementById("nameWrapper");
+
+  if (showNameBtn && nameWrapper) {
+    showNameBtn.addEventListener("click", () => {
+      nameWrapper.classList.add("visible");
+      showNameBtn.style.display = "none";
+      tryPlayMusic(); // nice moment to start music too
+    });
+  }
+});
