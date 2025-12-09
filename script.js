@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Let all CSS animations start
   setTimeout(() => {
     body.classList.remove("not-loaded");
-  }, 100); // small delay for nicer entrance
+  }, 100);
 
   // ===== Letter modal elements =====
   const letterBtn = document.getElementById("letterBtn");
@@ -25,14 +25,47 @@ document.addEventListener("DOMContentLoaded", () => {
         isMusicPlaying = true;
       })
       .catch(() => {
-        // Autoplay might be blocked; that's okay, we just ignore the error
+        // autoplay blocked, ignore
       });
+  }
+
+  // ===== Multi-step screens inside letter =====
+  const stepScreens = document.querySelectorAll(".step-screen");
+  const prevStepBtn = document.getElementById("prevStepBtn");
+  const nextStepBtn = document.getElementById("nextStepBtn");
+
+  let currentStep = 1;
+  const totalSteps = stepScreens.length || 0;
+
+  function updateSteps() {
+    stepScreens.forEach((screen) => {
+      const step = Number(screen.dataset.step);
+      screen.classList.toggle("active", step === currentStep);
+    });
+
+    if (prevStepBtn) {
+      prevStepBtn.disabled = currentStep === 1;
+    }
+
+    if (nextStepBtn) {
+      if (currentStep === totalSteps) {
+        nextStepBtn.textContent = "Close 💌";
+      } else {
+        nextStepBtn.textContent = "Next ➜";
+      }
+    }
   }
 
   // ===== Modal open/close =====
   function openModal() {
     if (!letterModal) return;
     letterModal.classList.add("active");
+
+    if (totalSteps > 0) {
+      currentStep = 1;
+      updateSteps();
+    }
+
     tryPlayMusic();
   }
 
@@ -59,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Also try to start music on first click anywhere (mobile friendly)
+  // Music also tries to start on very first tap anywhere (for mobile)
   document.addEventListener(
     "click",
     () => {
@@ -68,24 +101,26 @@ document.addEventListener("DOMContentLoaded", () => {
     { once: true }
   );
 
-  // ===== Pink / BMW / Tulip cards =====
-  const revealCards = document.querySelectorAll(".reveal-card");
-
-  revealCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      card.classList.toggle("revealed");
+  // Step navigation
+  if (prevStepBtn && nextStepBtn && totalSteps > 0) {
+    prevStepBtn.addEventListener("click", () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+      }
     });
-  });
 
-  // ===== Name reveal =====
-  const showNameBtn = document.getElementById("showNameBtn");
-  const nameWrapper = document.getElementById("nameWrapper");
-
-  if (showNameBtn && nameWrapper) {
-    showNameBtn.addEventListener("click", () => {
-      nameWrapper.classList.add("visible");
-      showNameBtn.style.display = "none";
-      tryPlayMusic(); // nice moment to start music too
+    nextStepBtn.addEventListener("click", () => {
+      if (currentStep < totalSteps) {
+        currentStep++;
+        updateSteps();
+      } else {
+        // Last step → close the letter nicely
+        closeModal();
+      }
     });
+
+    // Make sure initial state is correct
+    updateSteps();
   }
 });
