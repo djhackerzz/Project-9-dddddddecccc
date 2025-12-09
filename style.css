@@ -1894,73 +1894,136 @@ body {
 
 /* --- COLOR STEP: soft floating blobs --- */
 
+/* --- COLOUR STEP: SUNSET AURORA PINK GLOW --- */
+
 .step-visual--color {
-  background: radial-gradient(circle at top left, #ffb6c1 0%, transparent 50%),
-              radial-gradient(circle at bottom right, #ffc0cb 0%, transparent 55%),
-              #fff;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2.5vmin;
+  background: linear-gradient(
+    120deg,
+    #ff6fae,
+    #ff9ecb,
+    #ffc3e0,
+    #d7b6ff,
+    #ff9ecb
+  );
+  background-size: 400% 400%;
+  animation: auroraFlow 10s ease-in-out infinite;
+  box-shadow:
+    0 0 3vmin rgba(255, 105, 180, 0.45),
+    inset 0 0 3vmin rgba(255, 182, 193, 0.55);
 }
 
-.color-orb {
+/* flowing aurora motion */
+@keyframes auroraFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* soft glowing mist layers */
+.step-visual--color::before,
+.step-visual--color::after {
+  content: "";
   position: absolute;
-  border-radius: 50%;
-  filter: blur(1vmin);
-  opacity: 0.9;
-  animation: orbFloat 8s ease-in-out infinite;
+  inset: -20%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 182, 193, 0.45),
+    transparent 65%
+  );
+  filter: blur(6vmin);
+  opacity: 0.8;
+  animation: auroraMist 12s ease-in-out infinite;
 }
 
-.color-orb--1 {
-  width: 12vmin;
-  height: 12vmin;
-  top: -2vmin;
-  left: -2vmin;
-  background: radial-gradient(circle, #ff80ab, #ffb6c1);
+.step-visual--color::after {
+  animation-delay: -6s;
+  opacity: 0.6;
 }
 
-.color-orb--2 {
-  width: 10vmin;
-  height: 10vmin;
-  bottom: -2vmin;
-  right: 10%;
-  background: radial-gradient(circle, #f48fb1, #ffb6c1);
-  animation-delay: -3s;
+@keyframes auroraMist {
+  0%   { transform: translateX(-10%) translateY(-5%); }
+  50%  { transform: translateX(10%) translateY(5%); }
+  100% { transform: translateX(-10%) translateY(-5%); }
 }
 
-.color-orb--3 {
-  width: 8vmin;
-  height: 8vmin;
-  top: 2vmin;
-  right: -1vmin;
-  background: radial-gradient(circle, #ffe4ec, #ffb6c1);
-  animation-delay: -5s;
+/* shimmering light sweep */
+.step-visual--color .color-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: auroraShimmer 7s ease-in-out infinite;
 }
 
-@keyframes orbFloat {
-  0%   { transform: translateY(0) translateX(0); }
-  50%  { transform: translateY(-1.5vmin) translateX(1.5vmin); }
-  100% { transform: translateY(0) translateX(0); }
+@keyframes auroraShimmer {
+  0%   { transform: translateX(-120%); opacity: 0; }
+  40%  { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
+/* glowing animated word "pink" */
+
+.highlight-pink {
+  color: #fff;
+  font-weight: 700;
+  text-shadow:
+    0 0 8px #ff69b4,
+    0 0 16px #ffb6c1,
+    0 0 26px #ffc0cb,
+    0 0 40px rgba(255, 105, 180, 0.9);
+  animation: pinkPulse 3s ease-in-out infinite;
+}
+
+@keyframes pinkPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 8px #ff69b4,
+      0 0 16px #ffb6c1,
+      0 0 26px #ffc0cb;
+  }
+  50% {
+    text-shadow:
+      0 0 16px #ff69b4,
+      0 0 26px #ffb6c1,
+      0 0 40px #ffffff;
+  }
 }
 
 /* --- CAR STEP: tiny CSS BMW driving --- */
 
 .step-visual--car {
-  background: linear-gradient(to top, #e0f7ff 0%, #ffffff 55%);
+  background: linear-gradient(to top, #d7ecff 0%, #ffffff 55%);
+  position: relative;
+  overflow: hidden;
 }
+
+/* road with moving dashed line to feel alive */
 
 .car-road {
   position: absolute;
   bottom: 3vmin;
   left: 0;
   right: 0;
-  height: 2.2vmin;
-  background: linear-gradient(to right, #444, #555);
+  height: 2.4vmin;
+  background: linear-gradient(to right, #3d3d3d, #4a4a4a);
+  box-shadow: 0 -0.2vmin 0.6vmin rgba(0, 0, 0, 0.4);
 }
 
 .car-road::after {
   content: "";
   position: absolute;
   top: 50%;
-  left: -20%;
-  width: 140%;
+  left: -40%;
+  width: 200%;
   height: 0.3vmin;
   background-image: repeating-linear-gradient(
     to right,
@@ -1970,63 +2033,130 @@ body {
     transparent 3vmin
   );
   transform: translateY(-50%);
-  opacity: 0.7;
+  opacity: 0.8;
+  animation: roadDashMove 2.5s linear infinite;
 }
 
-/* simplified little car */
+@keyframes roadDashMove {
+  0%   { transform: translate(-10%, -50%); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+/* tiny BMW-style car */
 
 .car {
   position: absolute;
-  bottom: 4vmin;
-  left: -20%;
-  width: 12vmin;
-  height: 4.5vmin;
+  bottom: 4.1vmin;
+  left: -25%;
+  width: 13vmin;
+  height: 5vmin;
   animation: carDrive 5s linear infinite;
+}
+
+/* slight suspension bounce while driving */
+
+@keyframes carDrive {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(40%) translateY(-0.3vmin);
+  }
+  50% {
+    transform: translateX(80%) translateY(0.1vmin);
+  }
+  75% {
+    transform: translateX(120%) translateY(-0.3vmin);
+  }
+  100% {
+    transform: translateX(160%) translateY(0);
+  }
 }
 
 .car-top {
   position: absolute;
-  left: 2vmin;
-  bottom: 3vmin;
-  width: 7vmin;
-  height: 2vmin;
-  border-radius: 1.2vmin 1.2vmin 0.5vmin 0.5vmin;
-  background: linear-gradient(135deg, #222, #555);
+  left: 2.3vmin;
+  bottom: 3.2vmin;
+  width: 7.5vmin;
+  height: 2.1vmin;
+  border-radius: 1.3vmin 1.3vmin 0.6vmin 0.6vmin;
+  background: linear-gradient(135deg, #222, #4a4a4a);
 }
+
+.car-top::before {
+  content: "";
+  position: absolute;
+  inset: 0.3vmin;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #99c9ff, #e0f2ff);
+  opacity: 0.9;
+}
+
+/* BMW-ish body: dark, a bit sporty */
 
 .car-body {
   position: absolute;
   left: 0;
-  bottom: 1.3vmin;
-  width: 12vmin;
-  height: 3vmin;
-  border-radius: 1.2vmin;
-  background: linear-gradient(135deg, #111, #444);
-  box-shadow: 0 0.4vmin 0.6vmin rgba(0, 0, 0, 0.4);
+  bottom: 1.4vmin;
+  width: 13vmin;
+  height: 3.1vmin;
+  border-radius: 1.4vmin;
+  background: linear-gradient(135deg, #0d0d0d, #333);
+  box-shadow: 0 0.5vmin 0.8vmin rgba(0, 0, 0, 0.5);
 }
+
+/* simple grill & lights hint */
+
+.car-body::before {
+  content: "";
+  position: absolute;
+  left: 0.6vmin;
+  top: 1.1vmin;
+  width: 2.5vmin;
+  height: 0.8vmin;
+  border-radius: 0.4vmin;
+  background: linear-gradient(to right, #999, #ddd);
+}
+
+.car-body::after {
+  content: "";
+  position: absolute;
+  right: 0.6vmin;
+  top: 1.1vmin;
+  width: 0.8vmin;
+  height: 0.8vmin;
+  border-radius: 0.4vmin;
+  background: radial-gradient(circle, #fffbdd 0, #ffd54f 60%, transparent 100%);
+  box-shadow: -0.3vmin 0 0.8vmin rgba(255, 213, 79, 0.8);
+}
+
+/* wheels with spinning animation */
 
 .car-wheel {
   position: absolute;
   bottom: 0;
-  width: 2vmin;
-  height: 2vmin;
+  width: 2.2vmin;
+  height: 2.2vmin;
   border-radius: 50%;
   background: #111;
-  box-shadow: 0 0 0 0.3vmin #333;
-  animation: wheelSpin 0.8s linear infinite;
+  box-shadow: 0 0 0 0.35vmin #333;
+  animation: wheelSpin 0.6s linear infinite;
+}
+
+.car-wheel::after {
+  content: "";
+  position: absolute;
+  inset: 0.5vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, #666 0, #222 60%);
 }
 
 .car-wheel--left {
-  left: 2vmin;
+  left: 2.2vmin;
 }
 
 .car-wheel--right {
-  right: 2vmin;
-}
-
-@keyframes carDrive {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(160%); }
+  right: 2.2vmin;
 }
 
 @keyframes wheelSpin {
@@ -2034,11 +2164,15 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+
 /* --- TULIP STEP: tiny growing tulip --- */
 
 .step-visual--tulip {
-  background: linear-gradient(to top, #d0f8da 0%, #ffffff 55%);
+  background: linear-gradient(to top, #c8f5d3 0%, #ffffff 55%);
+  position: relative;
 }
+
+/* stem grows from ground + gently sways a bit */
 
 .tulip-stem {
   position: absolute;
@@ -2047,54 +2181,113 @@ body {
   width: 0.7vmin;
   height: 8vmin;
   background: linear-gradient(to top, #2e7d32, #66bb6a);
-  transform: translateX(-50%);
   border-radius: 999px;
-  animation: tulipGrow 1.2s ease-out backwards;
+  transform-origin: bottom;
+  transform: translateX(-50%) scaleY(0);
+  animation: tulipStemGrow 1s ease-out forwards;
 }
+
+@keyframes tulipStemGrow {
+  0% {
+    transform: translateX(-50%) scaleY(0);
+    opacity: 0;
+  }
+  70% {
+    transform: translateX(-50%) scaleY(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+/* leaves grow out from sides */
 
 .tulip-leaf {
   position: absolute;
-  bottom: 3.5vmin;
+  bottom: 3.4vmin;
   width: 4vmin;
   height: 3vmin;
   background: linear-gradient(to top, #43a047, #a5d6a7);
   border-radius: 4vmin 0 4vmin 0;
   transform-origin: bottom;
-  animation: tulipGrow 1.2s ease-out backwards;
+  opacity: 0;
 }
 
 .tulip-leaf--left {
   left: 50%;
-  transform: translateX(-80%) rotate(-30deg);
+  transform: translateX(-90%) rotate(-35deg) scale(0.2);
+  animation: tulipLeafLeftGrow 0.9s 0.4s ease-out forwards;
 }
 
 .tulip-leaf--right {
   left: 50%;
-  transform: translateX(-20%) rotate(25deg) scaleX(-1);
+  transform: translateX(-10%) rotate(35deg) scale(0.2);
+  animation: tulipLeafRightGrow 0.9s 0.45s ease-out forwards;
 }
+
+@keyframes tulipLeafLeftGrow {
+  0% {
+    opacity: 0;
+    transform: translateX(-90%) rotate(-35deg) scale(0.2);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-90%) rotate(-40deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-90%) rotate(-35deg) scale(1);
+  }
+}
+
+@keyframes tulipLeafRightGrow {
+  0% {
+    opacity: 0;
+    transform: translateX(-10%) rotate(35deg) scale(0.2);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-10%) rotate(40deg) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-10%) rotate(35deg) scale(1);
+  }
+}
+
+/* flower appears after stem + leaves, then gently sways */
 
 .tulip-flower {
   position: absolute;
-  bottom: 10.5vmin;
+  bottom: 10.3vmin;
   left: 50%;
-  transform: translateX(-50%);
-  width: 4.5vmin;
-  height: 4.5vmin;
-  animation: tulipBloom 1.4s 0.2s ease-out backwards;
+  width: 4.6vmin;
+  height: 4.8vmin;
+  transform: translateX(-50%) scale(0.4);
+  transform-origin: bottom center;
+  opacity: 0;
+  animation: tulipBloom 0.9s 0.8s ease-out forwards,
+             tulipSway 3s 1.7s ease-in-out infinite;
 }
 
 .tulip-petal {
   position: absolute;
   width: 3vmin;
-  height: 4.5vmin;
+  height: 4.8vmin;
   background: linear-gradient(to top, #ff4f8b, #ff99c2);
   border-radius: 3vmin 3vmin 0 0;
+  box-shadow: 0 0.3vmin 0.6vmin rgba(255, 79, 139, 0.4);
 }
+
+/* center petal */
 
 .tulip-petal--center {
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* side petals slightly tilted */
 
 .tulip-petal--left {
   right: 50%;
@@ -2106,15 +2299,33 @@ body {
   transform: translateX(10%) rotate(12deg);
 }
 
-@keyframes tulipGrow {
-  0%   { transform: scaleY(0) translateX(-50%); opacity: 0; }
-  100% { opacity: 1; }
+@keyframes tulipBloom {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1vmin) scale(0.4);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-0.3vmin) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 }
 
-@keyframes tulipBloom {
-  0%   { transform: translateX(-50%) translateY(1vmin) scale(0.4); opacity: 0; }
-  60%  { transform: translateX(-50%) translateY(-0.3vmin) scale(1.05); opacity: 1; }
-  100% { transform: translateX(-50%) translateY(0) scale(1); }
+/* gentle idle motion like a real flower in breeze */
+
+@keyframes tulipSway {
+  0% {
+    transform: translateX(-50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-3deg) scale(1.02);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0deg) scale(1);
+  }
 }
 
 
